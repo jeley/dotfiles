@@ -1,0 +1,403 @@
+#!/usr/bin/env bash
+
+#-------------------------------------------------------------------
+# VARIABLE
+#-------------------------------------------------------------------
+
+NOW=$(date +"%A, %e %B %Y %T")
+NOWISH=$(date +"%T")
+DATE_SIX=$(date +"%y%m%d")
+DATE_ISO=$(date +"%Y_%m_%d")
+U_A=jukilo
+U_B=arbogast74
+
+
+# Find Process
+fp () {
+	if ps aux | grep "$1" > /tmp/test.txt; then echo 1; else echo 0; fi
+}
+
+
+# Determine size of a file or total size of a directory
+function size() {
+  if du -b /dev/null > /dev/null 2>&1; then
+    local arg=-sbh;
+  else
+    local arg=-sh;
+  fi
+  if [[ -n "$@" ]]; then
+    du $arg -- "$@";
+  else
+    du $arg .[^.]* ./*;
+  fi;
+}
+
+
+
+# FILEMERGE
+function filemerge () {
+  /Applications/Xcode.app/Contents/Applications/FileMerge.app $1
+}
+
+# Create a new directory and enter it
+function md() {
+  mkdir -p "$@" && cd "$_";
+}
+
+
+
+
+
+#-------------------------------------------------------------------
+# http://stackoverflow.com/questions/2708097/preventing-a-child-process-handbrakecli-from-causing-the-parent-script-to-exit
+
+transcodemkv() {
+	find . -type f -name '*.mkv' | while read file;
+do
+	echo "" | 670-transcode-video.sh --m4v --slow --crop auto "$file"
+	sleep 2
+done
+}
+
+
+
+
+
+#-------------------------------------------------------------------
+# Mount B-movie volume first
+transin() {
+	cd '/Volumes/B-movie/_pending';
+}
+
+#-------------------------------------------------------------------
+# Checks and displays optimum crop values
+detect() {
+	/usr/local/bin/detect-crop $@
+}
+
+
+#-------------------------------------------------------------------
+# create indexed directory
+onemoredir() {
+	n=0
+	while ! mkdir parts$n 2>/dev/null
+	do
+		n=$((n+1))
+	done
+}
+
+#-------------------------------------------------------------------
+# Renames any image file, appending image size to filename before
+# the extension. Requires exiftool.
+# http://www.sno.phy.queensu.ca/~phil/exiftool/filename.html
+jpgsize () {
+	if [ "$#" -ne 1 ];then echo "no file(s) specified"; fi
+	/usr/local/bin/exiftool $(-filename<%f-$imagesize.%e) "$1" &>/dev/null
+	#exiftool -q "$( -filename<%f-$imagesize.%e )" ./*
+}
+
+#-------------------------------------------------------------------
+# CD-FUNCTIONS
+#-------------------------------------------------------------------
+
+#-------------------------------------------------------------------
+# Used with 150 (script)
+indexupdate() {
+	here=$(pwd);
+	cd $HOME/Sites/terminal_config/;
+	echo "<h4>Updated: $NOW</h4>" > 0b;
+	cat 0a 0b 0c > index.html;
+	cd $here;
+	return 0
+}
+
+
+#-------------------------------------------------------------------
+gt() { # cd's to frontmost window of Finder
+        cd "$(osascript -e 2>/dev/null 'tell app "Finder" to POSIX path of (insertion location as alias)')"
+}
+
+
+#-------------------------------------------------------------------
+function funcrush() {
+	for png in $(find $1 -iname "*.png");
+	do
+		echo "crushing $png"
+		pngcrush -rem allb -brute "$png" temp.png &>/dev/null
+		mv -f temp.png $png
+	done;
+}
+
+# #-------------------------------------------------------------------
+# track_script()
+# {
+# SAVE_FILE=~/.scripts-run;
+# #echo "${HOSTNAME} ran script \"$(basename $0)\" on" >> "$SAVE_FILE";
+# echo "$(echo $HOSTNAME | tr 'a-z' 'A-Z') ran script \"$(basename $0)\" on" >> "$SAVE_FILE";
+# echo "$NOW" >> "$SAVE_FILE";
+# echo "for user \"${USER}\"" >> "$SAVE_FILE";
+# echo "" >> "$SAVE_FILE";
+# return 0
+# }
+
+
+#-------------------------------------------------------------------
+mvf() {
+# move file(s) and then cd into the destination folder
+if  mv "$@"; then
+        shift $(($#-1))
+        if [ -d $1 ]; then
+                cd ${1}
+        else
+                cd $(dirname ${1})
+        fi
+fi
+}
+
+#-------------------------------------------------------------------
+# Get ID of named process
+pidof () { ps -Ac | egrep -i $@ | awk '{print $1}'; }
+
+#-------------------------------------------------------------------
+space() { # Shows disk use
+	echo ""
+	df -Hl # | awk '{ printf("%-7s%-7s%-7s%-11s%-14s\n", $1, $2, $3, $4, $5, $6) }'
+	echo ""
+}
+
+#-------------------------------------------------------------------
+# PROMPT
+#-------------------------------------------------------------------
+
+# daveprompt3(){
+# 	# PS1="${lightredf}\h${r} [\W] ${lightredf}>>${r} "
+# 	# PS1="${redb}${whitef} \h ${r}${lightgreyb}${boldon}${blackf}${boldoff} \W ${r} ${redf}>> ${r}"
+# 	# PS1="${redb}${blackf}\u@\h ${r}${darkgreyb}${boldon}${whitef}${boldoff}\W ${r} ${redf}> ${r}"
+# 	PS1="${redf}\u@\h${r} ${whitebf}\W${r} ${redf}> ${r}"
+# 	# PS1="${darkgreyb}${blackf}\h ${r}${redb}${boldon}${whitef}${boldoff} \W ${r} ${lightgreyf}> ${r}"
+# 	# PS1="${darkgreyb}${blackf}\h ${r}${redb}${boldon}${whitef}${boldoff} \W ${r} ${lightgreyf}▶︎ ${r}"
+# 	# PS1="${darkgreyb}${whitef}\h ${r}${redb}${boldon}${whitef}${boldoff} \W ${r} ${redf}❯❯ ${r}"
+# 	# PS1="${whitebf}\h ${rbold}${redb}${bold}${whitef}${rbold} \W ${r}${dgreyf}\!${redf}❯ ${r}"
+# 	# PS1="${whitebf}\h 🔓 ${rbold}${redb}${bold}${whitef}${rbold} \W ${r}${prompt_history}\!${redf}▶︎ ${r}"
+# }
+
+
+
+##########################################################################
+# IMAGE
+##########################################################################
+
+# img1 - adds profile, icon, changes ext. to lowercase
+function img1() {
+	for img in *[Jj][Pp][Gg]
+	do
+		profile="/Library/Application Support/Adobe/Color/Profiles/Recommended/AdobeRGB1998.icc"
+		#	profile="/Library/Application Support/Adobe/Color/Profiles/Recommended/sRGB Color Space Profile.icm"
+		touch -r "$img" /tmp/$UID.thumbnail-reference.tmp &>/dev/null
+		sips --embedProfile "$profile" "$img" &>/dev/null
+		sips --addIcon "$img" &>/dev/null
+		#	SetFile -c "8BIM" -t "JPEG" "$img" &>/dev/null
+		touch -r /tmp/$UID.thumbnail-reference.tmp "$img" ; &>/dev/null
+		trap "rm -f /tmp/$UID.thumbnail-reference.tmp; exit" 0 1 2 3 15 &>/dev/null
+	done
+}
+
+# extra commands for img1
+# newname= $(echo $img | sed s/_DSC/IMG/)
+# cp $img $newname
+# sips --rotate 270 "$img" &> /dev/null
+
+# lowers case, permissions to 644
+function img2() {
+for i in *.JPG; do base=$(basename "$i" .JPG); mv "$i" "$base".jpg;chmod 644 $i;done 2>/dev/null
+	# for i in *.MOV; do base=$(basename "$i" .MOV); mv "$i" "$base".mov;chmod 644 $i;done 2>/dev/null
+	# for i in *.WAV; do base=$(basename "$i" .WAV); mv "$i" "$base".wav;chmod 644 $i;done 2>/dev/null
+	return 0
+}
+
+# lowercases whole filename
+function lowerall () {
+	rename -fc *
+}
+
+# strips all metadata
+function xmetadata() {
+	exiftool -overwrite_original -all= *.jpg
+}
+
+
+#
+# turns pngs into renamed jpegs
+function png2jpg () {
+  mvb -nl 0 &>/dev/null
+  mvb -cn   &>/dev/null
+  nconvert -out jpeg -truecolors *.[Pp][Nn][Gg] &>/dev/null
+  exiftool -overwrite_original -all= *.jpg &>/dev/null
+  rm -f *.png
+}
+
+
+
+#------------------------------------------------------------------
+# ENCRYPTION
+#------------------------------------------------------------------
+## encrypts folders
+function encrypt() {
+	ONE=$(echo ${1%/})
+	arch_extn="tgz"
+	cryp_extn="des3"
+
+	echo "Archiving and encrypting \"$ONE\"..."
+	tar cf $ONE.$arch_extn $ONE
+
+	openssl des3 -salt -in $ONE.$arch_extn -out $ONE.$arch_extn.$cryp_extn
+	chmod 600 $ONE.$arch_extn.$cryp_extn
+	rm -f $ONE.$arch_extn
+	echo "Encryption completed"
+}
+
+function decrypt() {
+	arch_extn="tgz"
+	openssl des3 -d -salt -in "$1" -out "un.$arch_extn"
+	tar xf "un.$arch_extn"
+	rm -f un.tgz "$1"
+	return 0
+}
+
+
+
+
+#------------------------------------------------------------------
+removefilenamespaces()
+{ # first, we fix the directories
+
+for name in $(find . -type d -print | sed 's/ /____/g')
+do
+  if [ $name != "." ] ; then
+      oldname="$(echo $name | sed 's/____/ /g')"
+      newname="$(echo $name | sed 's/____/-/g')"
+      if [ "$oldname" != "$newname" ] ; then
+          echo "renaming \"$oldname\" to $newname"
+          mv "$oldname" "$newname"
+   fi
+  fi
+done
+
+echo ""
+echo "done with directories, fixing individual files..."
+
+# now let's fix the files therein using almost identical code
+
+for name in $(find . -type f -print | sed 's/ /____/g')
+do
+        oldname="$(echo $name | sed 's/____/ /g')"
+	newname="$(echo $name | sed 's/____/_/g')"
+if [ "$oldname" != "$newname" ] ; then
+        echo "renaming \"$oldname\" to $newname"
+mv "$oldname" "$newname"
+fi
+done
+
+return 0
+}
+
+
+# ANYBAR FUNCTION  white, red, orange, yellow, green, cyan, blue, purple, black, question, exclamation
+# https://github.com/tonsky/AnyBar
+function anybar { echo -n $1 | nc -4u -w0 localhost ${2:-1738}; }
+
+
+function anyrun () {
+    ANYBAR_PORT=$(jot -r 1 1700 1900);
+    ANYBAR_PORT=$ANYBAR_PORT open -n /Applications/AnyBar.app;
+    sleep 0.5;
+    anybar orange $ANYBAR_PORT;
+    "$@"
+    ret=$?;
+
+    if [[ ret -eq 0 ]]; then
+        anybar green $ANYBAR_PORT;
+    else
+        anybar red $ANYBAR_PORT;
+    fi
+    echo "Finished. Press [ENTER] to exit.";
+    read ENTER
+    anybar quit $ANYBAR_PORT;
+    return $ret;
+}
+
+
+
+# > displaytime 11617
+# 3 hours 13 minutes and 37 seconds
+# > displaytime 42
+# 42 seconds
+# > displaytime 666
+# 11 minutes and 6 seconds
+#
+# ## To use displaytime SCRIPT
+# ## enclose code within:
+# start="$(date +%s)"
+# ...code...
+# stop="$(date +%s)"
+# seconds="$(($stop-$start))"
+#
+# echo "${cyanf}Elapsed time: $(displaytime $seconds)"
+# echo "Finished at: $NOWISH${r}"
+#
+# OUTPUT
+# Elapsed time: 3 days 11 hours 20 mins and 0 secs
+# Finished at: 21:49:20
+
+
+displaytime ()
+{
+	local T=$1
+	local D=$((T/60/60/24))
+	local H=$((T/60/60%24))
+	local M=$((T/60%60))
+	local S=$((T%60))
+	(( $D > 0 )) && printf '%d days ' $D
+	(( $H > 0 )) && printf '%d hour(s) ' $H
+	(( $M > 0 )) && printf '%d mins ' $M
+	# (( $D > 0 || $H > 0 || $M > 0 )) && printf 'and '
+	# printf '%d secs\n' $S
+	(( $D > 0 || $H > 0 || $M > 0 ))
+}
+
+
+
+
+initializeANSI()
+{
+	esc=""
+	# http://misc.flogisoft.com/bash/tip_colors_and_formatting
+	# Forground
+	blackf="${esc}[30m";      redf="${esc}[31m";           greenf="${esc}[32m"
+	yellowf="${esc}[33m";     bluef="${esc}[34m";          magentaf="${esc}[35m"
+	cyanf="${esc}[36m";       lightgrayf="${esc}[37m";     darkgrayf="${esc}[90m"
+	lightredf="${esc}[91m";   lightgreenf="${esc}[92m";    lightyellowf="${esc}[93m"
+	lightbluef="${esc}[94m";  lightmagentaf="${esc}[95m";  lightcyanf="${esc}[96m"
+	defaultf="${esc}[39m";    whitef="${esc}[97m"
+
+	# Bold Forground
+	whitebf="${esc}[1;37m";   graybf="${esc}[1;30m";       bluebf="${esc}[1;34m"
+	greenbf="${esc}[1;32m";   cyanbf="${esc}[1;36m";       redbf="${esc}[1;31m"
+	magentabf="${esc}[1;35m"; yellowbf="${esc}[1;33m";     darkgrayf="${esc}[1;90m"
+
+	# Background
+	blackb="${esc}[40m";      redb="${esc}[41m";           greenb="${esc}[42m"
+	yellowb="${esc}[43m";     blueb="${esc}[44m";          magentab="${esc}[45m"
+	cyanb="${esc}[46m";       lightgrayb="${esc}[47m";     darkgrayb="${esc}[103m"
+	lightredb="${esc}[101m";  lightgreenb="${esc}[102m";   lightyellowb="${esc}[103m"
+	lightblueb="${esc}[104m"; lightmagentab="${esc}[105m"; lightcyanb="${esc}[106m"
+	defaultb="${esc}[49m";    whiteb="${esc}[47m"
+
+	# Set & Reset
+	bold="${esc}[1m";         rbold="${esc}[21m";          r="${esc}[0m"
+	dim="${esc}[2m";          rdim="${esc}[22m";           prompt_history="${esc}[38;5;241m"
+	udrline="${esc}[4m";      rudrline="${esc}[24m"
+	reverse="${esc}[7m";      rreverse="${esc}[27m"
+}
+
+
