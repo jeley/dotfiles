@@ -11,7 +11,7 @@ alias -- -="cd -"
 alias db="cd $HOME/Dropbox"
 alias dl="cd $HOME/Downloads"
 alias d="cd $HOME/Desktop"
-alias dot="cd $HOME/Dotfiles"
+alias dot="cd $HOME/dotfiles"
 alias g="git"
 
 # Git
