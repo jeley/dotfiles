@@ -80,7 +80,7 @@ alias sudo='sudo '
 alias week='date +%V'
 
 # vim
-alias v='/usr/bin/vim $@'
+alias v='/usr/local/bin/nvim $@'
 
 # Quit buffer
 alias q='logout'

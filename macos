@@ -201,6 +201,14 @@ defaults write com.apple.screencapture disable-shadow -bool true
 
 defaults write com.apple.finder DisableAllAnimations -bool true
 
+###############################################################################
+# Desktop CLEAR CLEAR CLEAR CLEAR CLEAR CLEAR CLEAR CLEAR CLEAR CLEAR CLEAR   #
+###############################################################################
+# Disables ability to draw desktop icons.
+# defaults write com.apple.finder CreateDesktop false; killall Finder
+# Enables ability to draw desktop icons.
+# defaults write com.apple.finder CreateDesktop true; killall Finder
+
 # Set Desktop as the default location for new Finder windows
 # For other paths, use `PfLo` and `file:///full/path/here/`
 # defaults write com.apple.finder NewWindowTarget -string "PfDe"
