@@ -74,16 +74,16 @@
 "    
 "    noremap ; :
 "    
-"    " Relative or absolute number lines
-"    function! NumberToggle()
-"        if(&nu == 1)
-"            set nu!
-"            set rnu
-"        else
-"            set nornu
-"            set nu
-"        endif
-"    endfunction
+" Relative or absolute number lines
+function! NumberToggle()
+    if(&nu == 1)
+        set nu!
+        set rnu
+    else
+        set nornu
+        set nu
+    endif
+endfunction
 "    
 "    """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "    " FUNCTION KEYS -- http://vim.wikia.com/wiki/Alternative_tab_navigation

@@ -1,10 +1,40 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" .config/nvim/init.vim (nvim rc file)   Original vimrc file @ line 355 below
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" .config/nvim/init.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set nocompatible
+filetype off
+set encoding=utf-8
+
+
+call plug#begin('~/.config/nvim/plugged')
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+call plug#end()
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PlugInstall [name ...] [#threads]	Install plugins
+" PlugUpdate [name ...] [#threads]	Install or update plugins
+" PlugClean[!]			Remove unused directories
+						(bang version will clean without prompt)
+" PlugUpgrade				Upgrade vim-plug itself
+" PlugStatus				Check the status of plugins
+" PlugDiff				Examine changes from the previous
+						update and the pending changes
+" PlugSnapshot[!] [output path]	Generate script for restoring
+						the current snapshot of the plugins
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:airline_powerline_fonts = 1
+
+" set background=dark
+"****** colorscheme solarized
+syntax on
+
+
+
+
 " Sets how many lines of history VIM has to remember
 set history=700
 
@@ -16,14 +46,12 @@ syntax on
 " Set to auto read when a file is changed from the outside
 set autoread
 
-" With a map leader it's possible to do extra key combinations
 let mapleader = ","
 
 " Fast saving
 nmap <leader>w :w!<cr>
 
-" Toggle Paster Mode
-set pastetoggle=<F4>
+set pastetoggle=<F4> " Toggle Paster Mode
 
 
 set nohlsearch
@@ -53,7 +81,6 @@ set hid
 
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
-set whichwrap+=<,>,h,l
 
 " Ignore case when searching
 set ignorecase
@@ -81,61 +108,33 @@ set mat=2
 " No annoying sound on errors
 set noerrorbells
 set novisualbell
-set t_vb=
 set tm=500
 
-" call plug#begin('~/.config/nvim/plugged')
-"
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
-"
-" call plug#end()
-"
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" " PlugInstall [name ...] [#threads]	Install plugins
-" " PlugUpdate [name ...] [#threads]	Install or update plugins
-" " PlugClean[!]			Remove unused directories
-" 						(bang version will clean without prompt)
-" " PlugUpgrade				Upgrade vim-plug itself
-" " PlugStatus				Check the status of plugins
-" " PlugDiff				Examine changes from the previous
-" 						update and the pending changes
-" " PlugSnapshot[!] [output path]	Generate script for restoring
-" 						the current snapshot of the plugins
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:airline_powerline_fonts = 1
-" set t_Co=256
-"
-" " set background=dark
-" " colorscheme kalisi
-" " syntax on
-" " " Set utf8 as standard encoding and en_US as the standard language
-" " set encoding=utf8
-" "
-" "
+" Turn off highlights
+set :noh=<space>
+
+
 " let g:airline_theme = 'solarized'
 " "
 " "set laststatus=2 " Always display the statusline in all windows
 " "set showtabline=2 " Always display the tabline, even if there is only one tab
-" "set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
-" "
-" "
-" "
-" "
-" " " Use Unix as the standard file type
-" " set ffs=unix,dos,mac
-" " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" " " => Files, backups and undo
-" " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" " " Turn backup off
-" set nobackup
-" set nowb
-" set noswapfile
-" " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" " " => Text, tab and indent related
-" " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" " " Use spaces instead of tabs
-" " " set expandtab
+set noshowmode " Hide -- INSERT --
+
+
+" Use Unix as the standard file type
+set ffs=unix,dos,mac
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Files, backups and undo
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Turn backup off
+set nobackup
+set nowb
+set noswapfile
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" " => Text, tab and indent related
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" " Use spaces instead of tabs
+" " set expandtab
 " "
 " " " Be smart when using tabs ;)
 " " set smarttab
@@ -443,20 +442,20 @@ set tm=500
 "        endif
 "    endfunction
 "    
-"    """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"    " FUNCTION KEYS -- http://vim.wikia.com/wiki/Alternative_tab_navigation
-"    """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"    nnoremap     		<F1>  :help
-"    nnoremap       <silent> <F2>  :sp $MYVIMRC   	<cr>
-"    nnoremap       <silent> <F3>  :sp ~/.vimbook   	<cr>
-"    nnoremap       <silent> <F4>  :set paste!    	<cr>
-"    nnoremap       <silent> <F5>  :call NumberToggle()	<cr>
-"    nnoremap       <silent> <F6>  :sp new           	<cr>
-"    nnoremap       <silent> <F7>  :vs new 	        	<cr>
-"    nnoremap       <silent> <F8>  :res +5        		<cr>
-"    nnoremap       <silent> <F9>  :res -5        		<cr>
-"    nnoremap       <silent> <F10> :w!            		<cr>
-"    nnoremap       <silent> <F11> :q!            		<cr>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" FUNCTION KEYS -- http://vim.wikia.com/wiki/Alternative_tab_navigation
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap     		<F1>  :help
+nnoremap       <silent> <F2>  :sp $MYVIMRC   	<cr>
+nnoremap       <silent> <F3>  :sp ~/.vimbook   	<cr>
+nnoremap       <silent> <F4>  :set paste!    	<cr>
+nnoremap       <silent> <F5>  :call NumberToggle()	<cr>
+nnoremap       <silent> <F6>  :sp new           	<cr>
+nnoremap       <silent> <F7>  :vs new 	        	<cr>
+nnoremap       <silent> <F8>  :res +5        		<cr>
+nnoremap       <silent> <F9>  :res -5        		<cr>
+nnoremap       <silent> <F10> :w!            		<cr>
+nnoremap       <silent> <F11> :q!            		<cr>
 "    
 "    
 "    " nnoremap       <silent> <F5>  :set number!   	<cr>
