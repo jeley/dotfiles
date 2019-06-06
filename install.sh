@@ -11,8 +11,7 @@ function makeLinks() {
   ln -sf ~/dotfiles/functions ~/.functions
   ln -sf ~/dotfiles/inputrc ~/.inputrc
   ln -sf ~/dotfiles/vimrc ~/.vimrc
-  ln -sf ~/dotfiles/init.vim ~/.config/nvim/init.vim
-
+# ln -sf ~/dotfiles/init.vim ~/.config/nvim/init.vim
 # ln -s ~/dotfiles/.gitconfig ~/.gitconfig
 # ln -s ~/dotfiles/.gitignore_global ~/.gitignore_global
 }
