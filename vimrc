@@ -10,6 +10,9 @@ Plug 'altercation/solarized'
 Plug 'altercation/vim-colors-solarized'
 Plug 'http://github.com/sjl/vitality.vim'
 Plug 'terryma/vim-smooth-scroll'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+
 
 call plug#end()
 
@@ -41,6 +44,7 @@ let g:lightline = {
 
 map <space> :noh<cr>
 
+noremap ; :
 
 " SPLITS
 set splitbelow
@@ -72,7 +76,6 @@ noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
-noremap ; :
 
 " Relative or absolute number lines
 function! NumberToggle()
