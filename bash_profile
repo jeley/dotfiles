@@ -106,6 +106,4 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 #
 #. $HOME/.bashrc
 export PATH=/usr/local/Cellar/ruby/2.4.1_1/bin:$PATH
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
 export PATH="/usr/local/sbin:$PATH"
