@@ -5,7 +5,6 @@ set nocompatible               			" be iMproved, required
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'itchyny/lightline.vim'
 Plug 'altercation/solarized'
 Plug 'altercation/vim-colors-solarized'
 Plug 'http://github.com/sjl/vitality.vim'
@@ -18,13 +17,19 @@ call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUG COMMANDS
-" PlugInstall [name ...] [#threads]	Install plugins
-" PlugUpdate [name ...] [#threads]	Install or update plugins
-" PlugClean[!]	Remove unused directories (bang version will clean without prompt)
-" PlugUpgrade	Upgrade vim-plug itself
-" PlugStatus	Check the status of plugins
-" PlugDiff	Examine changes from the previous update and the pending changes
-" PlugSnapshot[!] [output path]	Generate script for restoring the current snapshot of the plugins
+" PlugInstall [name ...] [#threads]"""""Install plugins
+" PlugUpdate [name ...] [#threads]""""""Install or update plugins
+" PlugClean[!]""""""""""""""""""""""""""Remove unused directories (bang version will clean without prompt)
+" PlugUpgrade"""""""""""""""""""""""""""Upgrade vim-plug itself
+" PlugStatus""""""""""""""""""""""""""""Check the status of plugins
+" PlugDiff""""""""""""""""""""""""""""""Examine changes from the previous update and the pending changes
+" PlugSnapshot[!] [output path]"""""""""Generate script for restoring the current snapshot of the plugins
+""""""""""""""""""""""""""""""""""""""""""""""""
+" TO ADD PLUG " https://github.com/junegunn/vim-plug/wiki/tutorial
+" Add Plug to above list
+" Save buffer
+" source %
+" PlugInstall
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 syntax enable
@@ -55,6 +60,8 @@ nmap <Tab> <C-w>w
 
 set laststatus=2
 set noshowmode
+
+set t_Co=256
 
 set hlsearch
 set incsearch
@@ -177,3 +184,41 @@ let g:airline_left_alt_sep = '|'
 let g:airline_right_sep = ' '
 let g:airline_right_alt_sep = '|'
 let g:airline_theme= 'solarized'
+
+" air-line
+let g:airline_powerline_fonts = 1
+
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
+
+
+
+" airline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
+
+
+
