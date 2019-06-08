@@ -11,9 +11,8 @@ function makeLinks() {
   ln -sf ~/dotfiles/functions ~/.functions
   ln -sf ~/dotfiles/inputrc ~/.inputrc
   ln -sf ~/dotfiles/vimrc ~/.vimrc
-# ln -sf ~/dotfiles/init.vim ~/.config/nvim/init.vim
-# ln -s ~/dotfiles/.gitconfig ~/.gitconfig
-# ln -s ~/dotfiles/.gitignore_global ~/.gitignore_global
+  ln -sf ~/dotfiles/gitconfig ~/.gitconfig
+  ln -sf ~/dotfiles/gitignore_global ~/.gitignore_global
 }
 
 read -rp "Overwrite existing files? (y/n) " -n 1;
@@ -22,5 +21,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   makeLinks
 fi;
 
-cp -Rf ~/dotfiles/vim ~/.vim
+# rm -r .vim
+
+# cp -Rf ~/dotfiles/vim ~/.vim
 
