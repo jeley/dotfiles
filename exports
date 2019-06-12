@@ -28,15 +28,10 @@ export COMPANY="John Eley Studio"
 
 
 
-# # export LESS='-r '
-# export LESS='--quit-if-one-screen --ignore-case --status-column --LONG-PROMPT --RAW-CONTROL-CHARS --HILITE-UNREAD --tabs=4 --no-init --window=-4'
-export CLICOLOR=1
+# export CLICOLOR=1
 export LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31'
-# export VIM_APP_DIR='/Applications'
-# export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-# export RBENV_ROOT=/usr/local/var/rbenv
 export GREP_OPTIONS='--color=auto' # GREP_COLOR='100;8'
-export LSCOLORS='GxFxCxDxBxegedabagaced'
+export LSCOLORS='GxfxCxDxBxegedabagaced'
 # # export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
 # # export BAT_CHARGE="~/Dropbox/bin/batcharge.py"
 # # export LOCATE_PATH="~/tmp/locatedb"

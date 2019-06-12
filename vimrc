@@ -1,14 +1,14 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Johns vimrc
+" johns vimrc
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible               			" be iMproved, required
 
+" vim-plug
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
 
 Plug 'altercation/solarized'
 Plug 'altercation/vim-colors-solarized'
 Plug 'http://github.com/sjl/vitality.vim'
-Plug 'terryma/vim-smooth-scroll'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-airline/vim-airline'
 Plug 'junegunn/seoul256.vim'
@@ -62,6 +62,8 @@ set laststatus=2
 set noshowmode
 
 set t_Co=256
+set encoding=utf-8
+set ttimeoutlen=50
 
 set hlsearch
 set incsearch
@@ -135,20 +137,20 @@ iab inc #include <cs50.h>
 iab df #define
 iab _sh #!/bin/bash<CR>. $HOME/Dropbox/bin/library.sh<CR>initializeANSI<CR>
 
-" ----------------------------------------------------------------------------
-" AUTOCOMMANDS
+" autocommands
 " ----------------------------------------------------------------------------
 " Setting to automatically remove trailing whitespace when saving a file
 " This works for all files (for individual extensions use *.sh,*.py etc)
 autocmd BufWritePre * :%s/\s\+$//e
-
 
 " Whenever you save .vimrc, it will be automatically sourced by vim.
 autocmd! bufwritepost .vimrc nested source %
 autocmd BufNewFile,BufRead *.vm,*.html,*.htm,*.shtml,*.stm set ft=velocity
 autocmd BufNewFile,BufRead *.ino setf arduino       "Bind syntax definition to .pde files:
 autocmd BufWritePre * :%s/\s\+$//e                  "Remove whitespace before saving file
+
 highlight Comment ctermfg=DarkGrey                  "Make comments light blue
+
 set viminfo='10,\"100,:20,%,n$HOME/.viminfo         "Restore cursor to file position
 "autocmd BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
@@ -173,52 +175,46 @@ augroup END
 " how many lines of history VIM has to remember
 set history=700
 
-let g:airline#extensions#tabline#enabled = 2
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#right_sep = ' '
-let g:airline#extensions#tabline#right_alt_sep = '|'
-let g:airline_left_sep = ' '
-let g:airline_left_alt_sep = '|'
-let g:airline_right_sep = ' '
-let g:airline_right_alt_sep = '|'
-let g:airline_theme= 'solarized'
-
+" let g:airline#extensions#tabline#enabled = 2
+" let g:airline#extensions#tabline#fnamemod = ':t'
+" let g:airline#extensions#tabline#left_sep = ' '
+" let g:airline#extensions#tabline#left_alt_sep = '|'
+" let g:airline#extensions#tabline#right_sep = ' '
+" let g:airline#extensions#tabline#right_alt_sep = '|'
+" let g:airline_left_sep = ' '
+" let g:airline_left_alt_sep = '|'
+" let g:airline_right_sep = ' '
+" let g:airline_right_alt_sep = '|'
+" let g:airline_theme= 'solarized'
+"
 " air-line
 let g:airline_powerline_fonts = 1
 
-
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-
-
+" if !exists('g:airline_symbols')
+"     let g:airline_symbols = {}
+" endif
 
 " unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.whitespace = 'Ξ'
-
-
-
-" airline symbols
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
-
+" let g:airline_left_sep = '»'
+" let g:airline_left_sep = '▶'
+" let g:airline_right_sep = '«'
+" let g:airline_right_sep = '◀'
+" let g:airline_symbols.linenr = '␊'
+" let g:airline_symbols.linenr = '␤'
+" let g:airline_symbols.linenr = '¶'
+" let g:airline_symbols.branch = '⎇'
+" let g:airline_symbols.paste = 'ρ'
+" let g:airline_symbols.paste = 'Þ'
+" let g:airline_symbols.paste = '∥'
+" let g:airline_symbols.whitespace = 'Ξ'
+"
+" " airline symbols
+" let g:airline_left_sep = ''
+" let g:airline_left_alt_sep = ''
+" let g:airline_right_sep = ''
+" let g:airline_right_alt_sep = ''
+" let g:airline_symbols.branch = ''
+" let g:airline_symbols.readonly = ''
+" let g:airline_symbols.linenr = ''
 
 
