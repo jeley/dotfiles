@@ -1,7 +1,7 @@
-<<<<<<< HEAD
-=======
+
+
+
 # This was changed.
->>>>>>> refs/remotes/origin/master
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/bin:$PATH";
 
@@ -71,7 +71,6 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 # # export LESS='-r '
 # export LESS='--quit-if-one-screen --ignore-case --status-column --LONG-PROMPT --RAW-CONTROL-CHARS --HILITE-UNREAD --tabs=4 --no-init --window=-4'
 # export CLICOLOR=1
-# export LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31'
 # export EDITOR=vim
 # export VIM_APP_DIR='/Applications'
 # export TERM='xterm-256color'
@@ -80,29 +79,26 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 # export HOMEBREW_GITHUB_API_TOKEN=c52b742f55d7b35ecc4b18283f060b9a7564fc28
 # export ENSCRIPT="--no-header --margins=50:50:50:50 --font=Courier10 --word-wrap --media=A4"
 # export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-<<<<<<< HEAD
 # export RBENV_ROOT=/usr/local/var/rbenv
-=======
->>>>>>> refs/remotes/origin/master
-#
-# # NEW BASH HISTORY START
-# # http://superuser.com/questions/1006009/how-to-make-bash-keep-most-frequently-used-history-entries-for-ever?rq=1
+
+# NEW BASH HISTORY START
+# http://superuser.com/questions/1006009/how-to-make-bash-keep-most-frequently-used-history-entries-for-ever?rq=1
 # HISTCONTROL=ignoreboth:erasedups
 # HISTIGNORE="?:??:???:$HISTIGNORE"
 # export HISTSIZE=
 # PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
-# # NEW BASH HISTORY END
-#
-# # export LSCOLORS='GxFxCxDxBxegedabagaced'
-# # export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
-# # export COMPANY="John Eley Studio"
-# # export BAT_CHARGE="~/Dropbox/bin/batcharge.py"
-# # export LOCATE_PATH="~/tmp/locatedb"
-# # export LS_OPTIONS='--color=auto'
-# # export PRINTER='Brother HL-2130 series'
-# # eval $( keychain --quiet --eval --agents ssh )
-#
-#
+# NEW BASH HISTORY END
+
+# export LSCOLORS='GxFxCxDxBxegedabagaced'
+# export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
+# export COMPANY="John Eley Studio"
+# export BAT_CHARGE="~/Dropbox/bin/batcharge.py"
+# export LOCATE_PATH="~/tmp/locatedb"
+# export LS_OPTIONS='--color=auto'
+# export PRINTER='Brother HL-2130 series'
+# eval $( keychain --quiet --eval --agents ssh )
+
+
 # if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
 #   . `brew --prefix`/etc/bash_completion.d/git-completion.bash
 # fi
@@ -110,7 +106,7 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 # _anybar_relaunch
 
 
-#
+
 #. $HOME/.bashrc
 export PATH=/usr/local/Cellar/ruby/2.4.1_1/bin:$PATH
 export PATH="/usr/local/sbin:$PATH"
