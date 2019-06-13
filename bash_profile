@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+# This was changed.
+>>>>>>> refs/remotes/origin/master
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/bin:$PATH";
 
@@ -76,7 +80,10 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 # export HOMEBREW_GITHUB_API_TOKEN=c52b742f55d7b35ecc4b18283f060b9a7564fc28
 # export ENSCRIPT="--no-header --margins=50:50:50:50 --font=Courier10 --word-wrap --media=A4"
 # export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+<<<<<<< HEAD
 # export RBENV_ROOT=/usr/local/var/rbenv
+=======
+>>>>>>> refs/remotes/origin/master
 #
 # # NEW BASH HISTORY START
 # # http://superuser.com/questions/1006009/how-to-make-bash-keep-most-frequently-used-history-entries-for-ever?rq=1

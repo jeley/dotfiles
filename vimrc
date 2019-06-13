@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 " johns vimrc
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible               			" be iMproved, required
@@ -31,6 +32,53 @@ call plug#end()
 " source %
 " PlugInstall
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+=======
+" Johns vimrc
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+"PLUGINS TO LOAD
+"Plug 'itchyny/lightline.vim'
+"Plug 'altercation/solarized'
+"Plug 'altercation/vim-colors-solarized'
+"Plug 'http://github.com/sjl/vitality.vim'
+"Plug 'terryma/vim-smooth-scroll'
+" PLUG COMMANDS
+" PlugInstall [name ...] [#threads]	Install plugins
+" PlugUpdate [name ...] [#threads]	Install or update plugins
+" PlugClean[!]	Remove unused directories (bang version will clean without prompt)
+" PlugUpgrade	Upgrade vim-plug itself
+" PlugStatus	Check the status of plugins
+" PlugDiff	Examine changes from the previous update and the pending changes
+" PlugSnapshot[!] [output path]	Generate script for restoring the current snapshot of the plugins
+>>>>>>> refs/remotes/origin/master
 
 syntax enable
 set background=dark
@@ -49,7 +97,10 @@ let g:lightline = {
 
 map <space> :noh<cr>
 
+<<<<<<< HEAD
 noremap ; :
+=======
+>>>>>>> refs/remotes/origin/master
 
 " SPLITS
 set splitbelow
@@ -61,10 +112,13 @@ nmap <Tab> <C-w>w
 set laststatus=2
 set noshowmode
 
+<<<<<<< HEAD
 set t_Co=256
 set encoding=utf-8
 set ttimeoutlen=50
 
+=======
+>>>>>>> refs/remotes/origin/master
 set hlsearch
 set incsearch
 set ignorecase
@@ -75,7 +129,11 @@ set nobackup       "no backup files
 set nowritebackup  "only in case you don't want a backup file while editing
 set noswapfile     "no swap files
 
+<<<<<<< HEAD
 "set relativenumber
+=======
+set relativenumber
+>>>>>>> refs/remotes/origin/master
 
 "set foldcolumn=1   " Add a bit extra margin to the left
 
@@ -85,6 +143,10 @@ noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
+<<<<<<< HEAD
+=======
+noremap ; :
+>>>>>>> refs/remotes/origin/master
 
 " Relative or absolute number lines
 function! NumberToggle()
@@ -97,13 +159,24 @@ function! NumberToggle()
     endif
 endfunction
 
+<<<<<<< HEAD
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FUNCTION KEYS -- http://vim.wikia.com/wiki/Alternative_tab_navigation
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+=======
+" -------------------------------------------------------------------
+" FUNCTION KEYS -- http://vim.wikia.com/wiki/Alternative_tab_navigation
+" -------------------------------------------------------------------
+>>>>>>> refs/remotes/origin/master
 nnoremap     		<F1>  :help
 nnoremap       <silent> <F2>  :sp $MYVIMRC   	<cr>
 nnoremap       <silent> <F3>  :sp ~/.vimbook   	<cr>
 nnoremap       <silent> <F4>  :set paste!    	<cr>
+<<<<<<< HEAD
+=======
+" nnoremap       <silent> <F5>  :set number!   	<cr>
+" nnoremap       <silent> <F5>  :exec &nu==&rnu? "se nu!" : "se rnu!"<cr>
+>>>>>>> refs/remotes/origin/master
 nnoremap       <silent> <F5>  :call NumberToggle()	<cr>
 nnoremap       <silent> <F6>  :sp new           	<cr>
 nnoremap       <silent> <F7>  :vs new 	        	<cr>
@@ -113,9 +186,12 @@ nnoremap       <silent> <F10> :w!            		<cr>
 nnoremap       <silent> <F11> :q!            		<cr>
 
 
+<<<<<<< HEAD
 " nnoremap       <silent> <F5>  :set number!   	<cr>
 " nnoremap       <silent> <F5>  :exec &nu==&rnu? "se nu!" : "se rnu!"<cr>
 
+=======
+>>>>>>> refs/remotes/origin/master
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ABBREVIATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -137,20 +213,33 @@ iab inc #include <cs50.h>
 iab df #define
 iab _sh #!/bin/bash<CR>. $HOME/Dropbox/bin/library.sh<CR>initializeANSI<CR>
 
+<<<<<<< HEAD
 " autocommands
+=======
+" ----------------------------------------------------------------------------
+" AUTOCOMMANDS
+>>>>>>> refs/remotes/origin/master
 " ----------------------------------------------------------------------------
 " Setting to automatically remove trailing whitespace when saving a file
 " This works for all files (for individual extensions use *.sh,*.py etc)
 autocmd BufWritePre * :%s/\s\+$//e
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/master
 " Whenever you save .vimrc, it will be automatically sourced by vim.
 autocmd! bufwritepost .vimrc nested source %
 autocmd BufNewFile,BufRead *.vm,*.html,*.htm,*.shtml,*.stm set ft=velocity
 autocmd BufNewFile,BufRead *.ino setf arduino       "Bind syntax definition to .pde files:
 autocmd BufWritePre * :%s/\s\+$//e                  "Remove whitespace before saving file
+<<<<<<< HEAD
 
 highlight Comment ctermfg=DarkGrey                  "Make comments light blue
 
+=======
+highlight Comment ctermfg=DarkGrey                  "Make comments light blue
+>>>>>>> refs/remotes/origin/master
 set viminfo='10,\"100,:20,%,n$HOME/.viminfo         "Restore cursor to file position
 "autocmd BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
@@ -172,6 +261,7 @@ augroup skeletongroup
 augroup END
 
 
+<<<<<<< HEAD
 " how many lines of history VIM has to remember
 set history=700
 
@@ -217,4 +307,6 @@ let g:airline_powerline_fonts = 1
 " let g:airline_symbols.readonly = ''
 " let g:airline_symbols.linenr = ''
 
+=======
+>>>>>>> refs/remotes/origin/master
 

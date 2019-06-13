@@ -11,7 +11,11 @@ alias -- -="cd -"
 alias db="cd $HOME/Dropbox"
 alias dl="cd $HOME/Downloads"
 alias d="cd $HOME/Desktop"
+<<<<<<< HEAD
 alias dot="cd $HOME/dotfiles"
+=======
+alias dot="cd $HOME/Dotfiles"
+>>>>>>> refs/remotes/origin/master
 alias g="git"
 
 # Git
