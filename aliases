@@ -20,7 +20,7 @@ alias .....="cd ../../../.."
 alias -- -="cd -"
 
 # Shortcuts
-alias db="cd $HOME/Dropbox"
+alias drive="cd $HOME/Google Drive"
 alias dl="cd $HOME/Downloads"
 alias d="cd $HOME/Desktop"
 alias dot="cd $HOME/dotfiles"
@@ -74,13 +74,10 @@ alias vol='cd /Volumes;ls -lFgGhpU'
 # alias bug='brew -v update; brew upgrade --force-bottle --cleanup; brew cleanup; brew cask cleanup; brew prune; brew doctor; echo "==> My Stuff"; brew list'
 
 # List all files colorized in long format, excluding . and ..
-# alias l="ls -lhAF ${colorflag}"
+alias l="ls -1F ${colorflag}"
 
 # List all files colorized in long format, including hidden, excluding . and ..
 alias ll="ls -lhAaF ${colorflag}"
-
-# List only directories
-alias ld="ls -lF ${colorflag} | grep --color=never '^d'"
 
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
@@ -92,7 +89,7 @@ alias egrep='egrep --color=auto'
 alias week='date +%V'
 
 # vim
-alias v='/usr/bin/vim $@'
+alias v='/usr/bin/vim'
 
 # Quit buffer
 alias q='logout'
@@ -116,9 +113,6 @@ command -v md5sum > /dev/null || alias md5sum="md5"
 
 # macOS has no `sha1sum`, so use `shasum` as a fallback
 command -v sha1sum > /dev/null || alias sha1sum="shasum"
-
-# Trim new lines and copy to clipboard
-# alias c="tr -d '\n' | pbcopy"
 
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
@@ -155,8 +149,6 @@ alias al='/usr/bin/vim $HOME/Dotfiles/aliases'
 
 alias b='cd $HOME/bin/'
 alias service='$HOME/bin/980-service.sh'
-# alias sha1='openssl sha -sha256 $@'
-# alias tmx='cd /usr/opt/tmux/share/tmux'
 
 
 

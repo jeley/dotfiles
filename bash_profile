@@ -35,7 +35,8 @@ if type _git &> /dev/null && [ -f /usr/local/etc/bash_completion.d/git-completio
 fi;
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
-[ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
+[ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config \
+	| grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
 
 # Add tab completion for `defaults read|write NSGlobalDomain`
 # You could just use `-g` instead, but I like being explicit
@@ -75,7 +76,7 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 # export VIM_APP_DIR='/Applications'
 # export TERM='xterm-256color'
 # export FIGNORE=$FIGNORE:'Application Scripts':'ScriptingAdditions':'Screen Savers'
-# # export GREP_OPTIONS='--color=auto' # GREP_COLOR='100;8'
+# export GREP_OPTIONS='--color=auto' # GREP_COLOR='100;8'
 # export HOMEBREW_GITHUB_API_TOKEN=c52b742f55d7b35ecc4b18283f060b9a7564fc28
 # export ENSCRIPT="--no-header --margins=50:50:50:50 --font=Courier10 --word-wrap --media=A4"
 # export HOMEBREW_CASK_OPTS="--appdir=/Applications"
