@@ -5,7 +5,7 @@ dir="~/dotfiles"             	 # dotfiles directory
 olddir="~/.dotfile-discards"       # old dotfiles
 
 # List of files/folders to symlink in homedir
-files="functions bashrc vimrc vim aliases bash_profile bash_prompt inputrc"
+files="aliases bash_profile bash_prompt bashrc exports functions inputrc vim vimrc"
 
 mkdir -p "$olddir"
 cd "$dir"
