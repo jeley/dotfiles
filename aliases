@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-
 alias 1='clear;echo;ls -1F $HOME/bin/1*|cut -d / -f5|nl;echo;cd $HOME/bin'
 alias 2='clear;echo;ls -1F $HOME/bin/2*|cut -d / -f5|nl;echo;cd $HOME/bin'
 alias 3='clear;echo;ls -1F $HOME/bin/3*|cut -d / -f5|nl;echo;cd $HOME/bin'
@@ -11,6 +10,17 @@ alias 7='clear;echo;ls -1F $HOME/bin/7*|cut -d / -f5|nl;echo;cd $HOME/bin'
 alias 8='clear;echo;ls -1F $HOME/bin/8*|cut -d / -f5|nl;echo;cd $HOME/bin'
 alias 9='clear;echo;ls -1F $HOME/bin/9*|cut -d / -f5|nl;echo;cd $HOME/bin'
 alias x='clear;echo;ls -1F $HOME/bin/x*|cut -d / -f5|nl;echo;cd $HOME/bin'
+
+# nas directories
+alias sbackup="cd /mnt/resources/backup"
+alias sdownloads="cd /mnt/resources/downloads"
+alias smusic="cd /mnt/resources/music"
+alias sphoto="cd /mnt/resources/photo"
+alias stransfer="cd /mnt/resources/transfer"
+alias svideo="cd /mnt/resources/video"
+alias smeta="cd /mnt/resources/Meta"
+alias sweb="cd /mnt/resources/web"
+
 
 # Easier navigation
 alias ..="cd .."
