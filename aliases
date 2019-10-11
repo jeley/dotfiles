@@ -153,6 +153,7 @@ alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/C
 
 alias ytdlar='cd /Volumes/B-movie/archive-MASTER/06-youtube-COLLECTION ; /usr/bin/open -b "com.apple.Preview" "$(ls -tr | tail -n 1)"'
 
+alias lan="$(ipconfig getifaddr en1)"
 alias wan='curl whatismyip.akamai.com;echo'
 alias al='/usr/bin/vim $HOME/Dotfiles/aliases'
 # alias alsort='mv ~/.aliases .aliasestmp && sort -k 2 < .aliasestmp > .aliases && rm .aliasestmp'
@@ -160,6 +161,7 @@ alias al='/usr/bin/vim $HOME/Dotfiles/aliases'
 alias b='cd $HOME/bin/'
 alias service='$HOME/bin/980-service.sh'
 
+alias xopen='$HOME/bin/261-open-urls-from-list.sh'
 
 
 

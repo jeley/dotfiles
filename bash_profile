@@ -111,3 +111,6 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 #. $HOME/.bashrc
 export PATH=/usr/local/Cellar/ruby/2.4.1_1/bin:$PATH
 export PATH="/usr/local/sbin:$PATH"
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
+
